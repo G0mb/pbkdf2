@@ -1,4 +1,4 @@
-import 'package:pbkdf2_dart/pbkdf2_dart.dart';
+import 'package:pbkdf2ns/pbkdf2ns.dart';
 import 'package:test/test.dart';
 import 'package:crypto/crypto.dart';
 
@@ -18,7 +18,7 @@ void main() {
     test('Should disallow large values of dkLen', () {
       var sha = sha1;
       var hLen = sha.blockSize;
-      var gen = PBKDF2(hash: sha);
+      var gen = PBKDF2NS(hash: sha);
       expect(
           () => gen.generateKey(
               'password', 'salt', 1, ((2 << 31) - 1) * hLen + 1),
@@ -26,7 +26,7 @@ void main() {
     });
 
     test('Should work with RFC6070 test vectors 1', () {
-      var gen = PBKDF2(hash: sha1);
+      var gen = PBKDF2NS(hash: sha1);
       var output = gen.generateKey('password', 'salt', 1, 20);
       expect(
           output,
@@ -35,7 +35,7 @@ void main() {
     });
 
     test('Should work with RFC6070 test vectors 2', () {
-      var gen = PBKDF2(hash: sha1);
+      var gen = PBKDF2NS(hash: sha1);
       var output = gen.generateKey('password', 'salt', 2, 20);
       expect(
           output,
@@ -44,7 +44,7 @@ void main() {
     });
 
     test('Should work with RFC6070 test vectors 3', () {
-      var gen = PBKDF2(hash: sha1);
+      var gen = PBKDF2NS(hash: sha1);
       var output = gen.generateKey('password', 'salt', 4096, 20);
       expect(
           output,
@@ -54,7 +54,7 @@ void main() {
 
     // This test may take a few minutes to run
     test('Should work with RFC6070 test vectors 4', () {
-      var gen = PBKDF2(hash: sha1);
+      var gen = PBKDF2NS(hash: sha1);
       var output = gen.generateKey('password', 'salt', 16777216, 20);
       expect(
           output,
@@ -63,7 +63,7 @@ void main() {
     });
 
     test('Should work with RFC6070 test vectors 5', () {
-      var gen = PBKDF2(hash: sha1);
+      var gen = PBKDF2NS(hash: sha1);
       var output = gen.generateKey('passwordPASSWORDpassword',
           'saltSALTsaltSALTsaltSALTsaltSALTsalt', 4096, 25);
       expect(
@@ -73,7 +73,7 @@ void main() {
     });
 
     test('Should work with RFC6070 test vectors 6', () {
-      var gen = PBKDF2(hash: sha1);
+      var gen = PBKDF2NS(hash: sha1);
       var output = gen.generateKey('pass\u0000word', 'sa\u0000lt', 4096, 16);
       expect(output,
           encodeBytes('56 fa 6a a7 55 48 09 9d cc 37 d7 f0 34 25 e0 c3'));

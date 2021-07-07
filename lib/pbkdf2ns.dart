@@ -1,15 +1,15 @@
-library pbkdf2_dart;
+library pbkdf2ns;
 
 import 'package:crypto/crypto.dart';
 import 'dart:convert';
 
 // Reference https://tools.ietf.org/html/rfc2898#page-9
-class PBKDF2 {
+class PBKDF2NS {
   Hash hash;
-  List<int> _blockList;
+  final List<int> _blockList;
   int? _prfLengthInBytes;
 
-  PBKDF2({required this.hash})
+  PBKDF2NS({required this.hash})
       : _blockList = List<int>.filled(4, 0, growable: false);
 
   List<int> generateKey(String password, String salt, int c, int dkLen) {

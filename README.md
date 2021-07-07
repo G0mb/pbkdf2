@@ -8,7 +8,7 @@ This is fork of [pbkdf2_dart](https://github.com/sunkeunchoi/pbkdf2/tree/null-sa
     PBKDF2NS gen = PBKDF2NS(hash: sha256);
 
     // Generate a 32 byte key using the given password and salt, with 1000 iterations
-    List<int> = gen.generateKey(_password, salt, i, 32);
+    List<int> key = gen.generateKey(_password, salt, i, 32);
 
 ## Credits
 Thanks you [Sunkeun Choi](https://github.com/sunkeunchoi) for addding support to 💪🏼 null safety 💪🏼

@@ -1,11 +1,10 @@
 name: pbkdf2ns
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/G0mb/pbkdf2
-description: Implementation of PBKDF2 key derivation function
+description: Implementation of PBKDF2 key derivation function, this provides tools for password hashing based on RFC 2898 
 environment:
   sdk: '>=2.12.0 <3.0.0'
 dependencies:
   crypto: ^3.0.1
 dev_dependencies:
-  pedantic: ^1.11.0
-  test: ^1.17.3
+  test: ^1.17.9
